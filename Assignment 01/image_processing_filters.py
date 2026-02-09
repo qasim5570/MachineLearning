@@ -5,7 +5,7 @@ from scipy.signal import convolve2d
 import matplotlib.pyplot as plt
 
 # Read image
-image = cv2.imread('/Users/qasim/Documents/MAIB/Semester 2/Machine Learning/MachineLearning/Assignment 01/lena.jpg', cv2.IMREAD_GRAYSCALE)
+image = cv2.imread('/Users/qasim/Documents/MAIB/Semester 2/MachineLearning/Assignment 01/lena.jpg', cv2.IMREAD_GRAYSCALE)
 # image = cv2.imread('baboon.jpg', cv2.IMREAD_GRAYSCALE)
 
 # ============ SMOOTHING/BLURRING FILTERS ============
