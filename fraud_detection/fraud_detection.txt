@@ -1,1 +1,19 @@
+TransactionDT: Time delta from a reference point (not a timestamp). Essential for seeing if fraud happens at specific "times of day."
 
+TransactionAmt: The $ price of the transaction.
+
+ProductCD: Product code for the transaction.
+
+card1 – card6: Payment card info (Bank ID, card type, etc.).
+
+addr1, addr2: Address information (usually ZIP code and Country).
+
+P_emaildomain, R_emaildomain: Purchaser and Recipient email domains.
+
+C1 – C14: Counting features (e.g., how many times an IP was seen). The actual meaning is masked.
+
+D1 – D15: Timedeltas (e.g., days since the last transaction).
+
+M1 – M9: Match features (e.g., does the name on the card match the address?).
+
+V1 – V339: Vesta engineered features. These are the most complex and usually highly redundant.
