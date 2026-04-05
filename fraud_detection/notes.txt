@@ -1,0 +1,18 @@
+Missing Data could be crucial in fraud detection -> hacker trying to hide his IP
+Still drop columns:
+  1. Even if useful, the machine cannot determine patterns. It would be treated as noise and would overfit the data
+  2. Low Variance -> Zero Information Gain
+  3. Missingness of that column has the same Fraud rate as non-missing -> weak signal
+Solution:
+  1. Add binary columns for these greater-than-70% missing data
+
+
+
+High Correlation in Heatmap -> Logical Groups, e.g., guest checkout - address, email, userID
+
+
+Reduce the set of 'V' columns:
+  1. reduces overfitting
+  2. computationally fast, especially with plotting
+  3. handles multi-collinearity by reducing the number of columns
+*** Later - Grouped PCA ***
