@@ -16,3 +16,11 @@ Reduce the set of 'V' columns:
   2. computationally fast, especially with plotting
   3. handles multi-collinearity by reducing the number of columns
 *** Later - Grouped PCA ***
+
+
+General PCA:
+  1. Impute
+  2. Scale
+  3. PCA Fit
+  4. Cumulative Sum
+  5. First index using argmax where variance hits 90%
