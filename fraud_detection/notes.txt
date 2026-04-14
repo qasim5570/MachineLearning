@@ -24,3 +24,18 @@ General PCA:
   3. PCA Fit
   4. Cumulative Sum
   5. First index using argmax where variance hits 90%
+
+
+Encode Other Categorical Columns:
+1. Low Cardinality - label encoding
+2. High Cardinality - frequency encoding
+
+Reason: 
+  1. XGBoost doesn't recognize strings. 
+  2. Also, one-hot encoding is not suitable here
+
+Process:
+  1. Categorical Columns - dtype objects for Pandas
+  2. Replace Nan
+  3. Number of unique columns/values inside each categorical column
+  4. Split Low Cardinality and High Cardinality values
