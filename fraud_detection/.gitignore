@@ -1,0 +1,6 @@
+.DS_Store
+data/raw/*
+data/processed/*
+models/*.pkl
+__pycache__/
+
