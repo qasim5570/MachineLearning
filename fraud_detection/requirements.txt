@@ -1,0 +1,14 @@
+# Essentials
+numpy
+pandas
+joblib
+
+# Visualization
+matplotlib
+seaborn
+missingno
+
+# ML Frameworks
+scikit-learn
+xgboost
+shap
