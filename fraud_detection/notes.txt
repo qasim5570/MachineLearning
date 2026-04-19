@@ -1,0 +1,67 @@
+Missing Data could be crucial in fraud detection -> hacker trying to hide his IP
+Still drop columns:
+  1. Even if useful, the machine cannot determine patterns. It would be treated as noise and would overfit the data
+  2. Low Variance -> Zero Information Gain
+  3. Missingness of that column has the same Fraud rate as non-missing -> weak signal
+Solution:
+  1. Add binary columns for these greater-than-70% missing data
+
+
+
+High Correlation in Heatmap -> Logical Groups, e.g., guest checkout - address, email, userID
+
+
+Reduce the set of 'V' columns:
+  1. reduces overfitting
+  2. computationally fast, especially with plotting
+  3. handles multi-collinearity by reducing the number of columns
+*** Later - Grouped PCA ***
+
+
+General PCA:
+  1. Impute
+  2. Scale
+  3. PCA Fit
+  4. Cumulative Sum
+  5. First index using argmax where variance hits 90%
+
+
+Encode Other Categorical Columns:
+1. Low Cardinality - label encoding
+2. High Cardinality - frequency encoding
+
+Reason: 
+  1. XGBoost doesn't recognize strings. 
+  2. Also, one-hot encoding is not suitable here
+
+Process:
+  1. Categorical Columns - dtype objects for Pandas
+  2. Replace Nan
+  3. Number of unique columns/values inside each categorical column
+  4. Split Low Cardinality and High Cardinality values
+
+Example Scenarios:
+Example A: The "Rare Email" Signal (Frequency Encoding)
+A fraudster creates a one-time email on an obscure domain like pookmail.com.
+
+Before: It’s just a string.
+
+After Frequency Encoding: It gets a value of 1.
+
+Fraud Pattern: The model learns that transactions where Email_Freq == 1 are 90% more likely to be fraud than those where Email_Freq == 450,000 (Gmail).
+
+Example B: The "Consistency" Signal (M-Flags)
+The M columns check if the address on the card matches the shipping address.
+
+Before: You have "T" (True), "F" (False), and "Unknown."
+
+After Label Encoding: These become 1, 0, and 2.
+
+Fraud Pattern: The model notices that when multiple M columns are 0 (False) simultaneously, it indicates a "Stolen Card" pattern where the thief doesn't know the victim's billing address.
+
+Example C: The "Product Type" Signal (ProductCD)
+Before: ProductCD is "W" (Service) or "C" (Commercial).
+
+After Label Encoding: They become 4 and 0.
+
+Fraud Pattern: Certain product codes have much higher chargeback rates. The model can now "weight" transactions for ProductCD 0 more heavily than others.
